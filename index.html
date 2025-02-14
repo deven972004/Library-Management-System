@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Library Management System</h1>
+
+<a href="/add-book" class="button">Add New Book</a>
+
+<h2>Book List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Year</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.publishedYear}"></td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${book.id})}" class="delete-btn">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
